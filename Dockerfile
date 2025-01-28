@@ -1,10 +1,10 @@
 FROM python:3
 
-RUN pip install torch
-RUN pip install transformers
-RUN pip install sty
-RUN pip install accelerate
+WORKDIR /app
 
-COPY main.py ./
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+COPY main.py .
 
 ENTRYPOINT python3 main.py
